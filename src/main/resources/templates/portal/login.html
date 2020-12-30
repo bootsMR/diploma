@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>会员中心-登陆</title>
+<link href="css/style.css" rel="stylesheet" type="text/css" />
+<link href="css/common.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="/static/css/bootStrap/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/css/bootStrap/bootstrap-theme.css">
+    <script type="text/javascript" src="/static/js/jquery-1.9.1.min.js"></script>
+    <script src=/static/css/bootStrap/bootstrap.min.js" type="application/javascript"></script>
+</head>
+<body>
+
+    <!--导航栏--->
+    <div th:replace="navigation :: copy"></div>
+    <!--导航栏--->
+
+    <div class="b_wrap">
+        <div class="current"><span>当前所在地：</span><a th:href="@{/index}">首页</a>  >> <a th:href="@{/goLogin}">会员登录</a>
+        </div>
+         <div class="login_w clearfix">
+    <form class="layui-form" method="post" action="/userLoging">
+        <div class="login">
+            <div class="login_t">会员登录</div>
+            <div class="login_con">
+                <table class="login_tab" width="270" border="0" cellspacing="0" cellpadding="0">
+                  <tr>
+                    <td>用户名：</td>
+                    <td><input type="text" id="userName" name="userName" value="" placeholder="请输入用户名"/></td>
+                  </tr>
+                  <tr>
+                    <td>密&nbsp;&nbsp;&nbsp;&nbsp;码：</td>
+                    <td><input type="password" id="password" name="password" value="" placeholder="请输入密码"/></td>
+                  </tr>
+                  <tr>
+                      <td></td>
+                       <td th:text="${message}" ></td>
+                  </tr>
+                  <tr>
+                    <td>&nbsp;</td>
+                    <td><button class="log_b" type="submit">登 录</button>
+                        <!--<a class="back_m" th:href="@{/changePassword}">找回密码</a>--></td>
+                  </tr>
+                </table>
+            </div>
+            <div class="login_b">
+                <p>还不是梦想游会员？  <a class="free_zc" th:href="@{/register}">免费注册</a> </p>
+            </div>
+        </div>
+    </form>
+    </div>
+</div>
+</body>
+</html>
