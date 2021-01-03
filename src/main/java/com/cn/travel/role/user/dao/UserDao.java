@@ -23,6 +23,7 @@ public interface UserDao extends BaseDao<User> {
      */
     @SelectProvider(type = UserSqlProvider.class, method = "login")
     public User login(@Param("userName") String userName, @Param("password") String password);
+
     @SelectProvider(type = UserSqlProvider.class, method = "findList")
     public List<User> findList();
 

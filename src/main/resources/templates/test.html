@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>中南旅游网-登录</title>
+    <!--自定义样式-->
+    <link href="favicon.ico" rel="#">
+    <link rel="stylesheet" type="text/css" href="../static/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../static/css/login.css">
+    <script src="../static/js/jquery-3.3.1.js"></script>
+    <script src="./static/js/bootstrap.min.js"></script>
+</head>
+
+
+
+<body>
+
+<!--导航栏--->
+<div th:replace="navigation :: copy"></div>
+<!--导航栏--->
+
+<section id="login_wrap">
+    <div class="fullscreen-bg" style="background: url(images/login_bg.png);height: 532px;">
+    </div>
+    <div class="login-box">
+        <div class="title">
+            <span>欢迎登录中南旅游账户</span>
+        </div>
+        <div class="login_inner">
+            <!--登录错误提示消息-->
+            <div id="errorMsg" class="alert alert-danger" ></div>
+            <form id="loginForm" action="/userLoging" method="post" accept-charset="utf-8">
+                <input type="hidden" name="action" value="login"/>
+                <input type="text" id="userName" name="userName" value="" placeholder="请输入用户名"/>
+                <input type="password" id="password" name="password" value="" placeholder="请输入密码"/>
+                <div class="submit_btn">
+                    <button type="button" type="submit">登录</button>
+                </div>
+            </form>
+            <div class="login_b">
+                <p>还不是梦想游会员？  <a class="free_zc" th:href="@{/register}">免费注册</a> </p>
+            </div>
+            <tr>
+                <td></td>
+                <td th:text="${message}" ></td>
+            </tr>
+        </div>
+
+    </div>
+
+</section>
+
+<!--引入尾部-->
+
+<div id="footer"></div>
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+
+<script src="js/jquery-1.11.0.min.js"></script>
+
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+
+<script src="js/bootstrap.min.js"></script>
+
+<!--导入布局js，共享header和footer-->
+
+<script type="text/javascript" src="js/include.js"></script>
+
+</body>
+
+
+
+</html>

@@ -1,0 +1,27 @@
+.b_wrap{width:980px;margin:0 auto;}
+.current{background:url(../images/usercenter/b_line.jpg) repeat-x left bottom;width:980px;height:35px;line-height:35px;}
+.current span{background:url(../images/usercenter/home_icon.jpg) no-repeat left center;padding-left:25px;height:35px;line-height:35px;display:inline-block;}
+.fmember{ width:980px; margin-top:10px; overflow:hidden}
+.fmleft{ width:260px; float:left}
+.fmleft_top{ width:260px; height:55px;}
+.fmlist{ width:258px; border:1px solid #ddd; background:#fff; margin-top:1px;}
+.fmlist ul{ list-style-type:none;}
+.fmlist ul li{ width:166px; height:24px; margin:0px 13px; padding:10px 0px 0px 66px; border-bottom:1px solid #e5e5e5}
+.fmlist ul li.f2{ width:166px; height:24px; margin:0px 13px; padding:10px 0px 0px 66px; border-bottom:0px solid #e5e5e5}
+.fmlist ul li a{ color:#666; text-decoration:none}
+.fmlist ul li a:hover{ color:#f60; text-decoration:underline}
+.fmlist ul li.f1{ width:258px; height:24px; margin:0px; padding:10px 0px 0px 0px; border-bottom:1px solid #e5e5e5; border-top:1px solid #e5e5e5; text-align:center; background:#f8f8f8; color:#333; font-size:14px; font-weight:bold}
+.fmright{ width:710px; float:right}
+
+.fmr1{ width:708px; border:1px solid #ddd; border-top:2px solid #81bc2c; background:#fff}
+.fmr1_top{ width:700px; padding-left:8px; border-bottom:1px solid #ddd; height:30px; padding-top:7px; color:#4f9c00; font-family:微软雅黑; font-size:16px; }
+.fmr1_m{ width:678px; padding:15px;}
+
+.fgr{ width:628px; border:5px solid #ececec; padding:20px;}
+.fgr_tx{ width:110px; float:left}
+.fgr_tx1{ width:108px; width:108px; border:1px solid #e4e4e4;}
+.fgr_tx1 img{ display:block;}
+.fgr_tx2{ width:110px; padding:10px 0px 0px 0px;; text-align:center; color:#36c}
+.fgr a{ color:#36c; text-decoration:none}
+.fgr a:hover{ color:#36c; text-decoration:underline}
+.fgr_zl{ width:490px; padding-top:8px; float:right}

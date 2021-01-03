@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>中南旅游网</title>
+    <!--自定义样式-->
+    <link href="favicon.ico" rel="#">
+    <link href="../static/css/bootstrap.min.css"rel="stylesheet" type="text/css" >
+    <link href="../static/css/userCenter.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../static/css/common.css">
+    <script src="../static/js/jquery-3.3.1.js"></script>
+    <script src="../static/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+
+<!--导航栏--->
+<div th:replace="navigation :: copy"></div>
+<!--导航栏--->
+
+
+<div class="b_wrap">
+    <div class="current"><span>当前所在地：</span><a th:href="@{/index}">首页</a> >> <a th:href="@{/userCenter}">会员中心</a></div>
+    <div class="fmember">
+    	<div class="fmleft">
+        	<div class="fmleft_top"><img src="../static/images/usercenter/fmbt1.png" border="0"/></div>
+            <div class="fmlist">
+            	<ul>
+                	<li class="f1">订单中心</li>
+                	<li> >><a th:href="@{/myOrder}">我的订单</a> </li>
+                    <li> >><a th:href="@{/myMessage}">我的留言</a> </li>
+                </ul>
+
+                <ul>
+                	<li class="f1">账户信息</li>
+                	<li> >><a th:href="@{/personInfo}">个人资料</a> </li>
+                    <li> >><a th:href="@{/changePassword}">修改密码</a> </li>
+                </ul>
+            </div>
+        </div>
+        <div class="fmright">
+        	<div class="fmr1">
+            	<div class="fmr1_top">会员中心</div>
+                <div class="fmr1_m">
+                	<div class="fgr">
+                    	<div class="fgr_tx">
+                        	<div class="fgr_tx1"><img src="../static/images/usercenter/touxiang.jpg" width="100px"  height="100px"/></div>
+                            <div class="fgr_tx2"><a th:href="@{/personInfo}">编辑个人资料</a></div>
+                        </div>
+                        <div class="fgr_zl">
+                        	<p class="fp2" th:text="${session.userName}+'，您好！'"></p>
+                        </div>
+                        <br style="clear:both"/>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--底部--->
+<div th:replace="navigation :: foot"></div>
+<!--底部--->
+</body>
+</html>

@@ -18,13 +18,13 @@ public class UserCenterController extends BaseController {
     @RequestMapping("/userCenter")
     public ModelAndView userCenter(){
         ModelAndView mv = this.getModeAndView();
-        mv.setViewName("portal/userCenter");
+        mv.setViewName("/userCenter");
         return mv;
     }
     @RequestMapping("/test")
-    public ModelAndView testCenter(){
+    public ModelAndView test(){
         ModelAndView mv = this.getModeAndView();
-        mv.setViewName("/index");
+        mv.setViewName("/test");
         return mv;
     }
 
