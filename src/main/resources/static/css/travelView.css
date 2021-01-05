@@ -55,7 +55,7 @@ pre,code,kbd,samp,tt{font-family:monospace;line-height:100%;}
 
 .b_wrap{width:980px;margin:0 auto;}
 
-.current{background:url(../images/b_line.jpg) repeat-x left bottom;width:980px;height:35px;line-height:35px;}
+.current{background:url(../images/portal_register/b_line.jpg) repeat-x left bottom;width:980px;height:35px;line-height:35px;}
 .current span{background:url(../images/home_icon.jpg) no-repeat left center;padding-left:25px;height:35px;line-height:35px;display:inline-block;}
 .clumn_w{margin-top:8px;}
 .clumn_w .clumn_l{float:left;width:260px;}

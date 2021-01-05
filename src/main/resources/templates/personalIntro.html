@@ -1,14 +1,18 @@
 ﻿<!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>中国梦想游-会员登录页</title>
-<link href="css/style.css" rel="stylesheet" type="text/css" />
-<link href="css/common.css" rel="stylesheet" type="text/css" />
-    <link rel="stylesheet" href="/static/css/bootStrap/bootstrap.min.css">
-    <link rel="stylesheet" href="/static/css/bootStrap/bootstrap-theme.css">
-    <script type="text/javascript" src="/static/js/jquery-1.9.1.min.js"></script>
-    <script src=/static/css/bootStrap/bootstrap.min.js" type="application/javascript"></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>中南旅游网</title>
+    <!--自定义样式-->
+    <link href="favicon.ico" rel="#">
+    <link href="../static/css/bootstrap.min.css"rel="stylesheet" type="text/css" >
+    <link href="../static/css/userCenter.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../static/css/common.css">
+    <link rel="stylesheet" type="text/css" href="../static/css/personalIntro.css">
+    <script src="../static/js/jquery-3.3.1.js"></script>
+    <script src="../static/js/bootstrap.min.js"></script>
 </head>
 <body>
 
@@ -18,45 +22,47 @@
 
 <div class="b_wrap">
     <div class="current"><span>当前所在地：</span><a th:href="@{/index}">首页</a> >> <a th:href="@{/userCenter}">会员中心</a></div>
-    <div class="fmember">
-    	<div class="fmleft">
-        	<div class="fmleft_top"><img src="images/fmbt1.png" border="0"/></div>
-            <div class="fmlist">
-                <ul>
-                    <li class="f1">订单中心</li>
-                    <li> >><a th:href="@{/myOrder}">我的订单</a> </li>
-                    <li> >><a th:href="@{/myMessage}">我的留言</a> </li>
-                </ul>
 
-                <ul>
-                    <li class="f1">账户信息</li>
-                    <li> >><a th:href="@{/personInfo}">个人资料</a> </li>
-                    <li> >><a th:href="@{/changePassword}">修改密码</a> </li>
-                </ul>
-            </div>
+
+
+
+
+    <div data-v-357a65ed="" class="container">
+        <div data-v-357a65ed="" class="left_box">
+            <ul data-v-357a65ed="" class="aside">
+                <li data-v-357a65ed="">
+                    <a class="zl" th:href="@{/personInfo}">个人资料</a></li>
+                <li data-v-357a65ed="">
+                    <a class="zl" th:href="@{/changePassword}" >密码修改</a></li>
+            </ul>
+            <ul data-v-357a65ed="" class="aside">
+                <li data-v-357a65ed="">
+                    <a class="zl" th:href="@{/myOrder}">我的订单</a></li>
+                <li data-v-357a65ed="">
+                    <a class="zl" th:href="@{/myMessage}">我的留言</a></li>
+            </ul>
         </div>
-        <div class="fmright">
-        	<div class="fmr1">
-            	<div class="fmr1_top">个人资料</div>
+        <div data-v-357a65ed="" class="view-container">
+            <div data-v-165b75c4="" data-v-357a65ed="" class="UserProfile view">
                 <div class="fmr1_m">
-                <form method="post" action="/personSave">
-                    <input type="hidden" id="id" name="id" th:value="${entity.id}"/>
-                    <p class="fp3">
-                    	<table border="0" cellpadding="0" cellspacing="0" width="638">
-                        	<tr>
-                            	<td width="60" align="left" height="30">用户名：</td>
+                    <form method="post" action="/personSave">
+                        <input type="hidden" id="id" name="id" th:value="${entity.id}"/>
+                        <p class="fp3">
+                        <table border="0" cellpadding="0" cellspacing="0" width="638">
+                            <tr>
+                                <td width="60" align="left" height="30">用户名：</td>
                                 <td width="578" align="left" height="30"><input type="text" th:value="${entity.userName}" class="finput3" id="userName" name="userName" value="" placeholder="请输入用户名"/></td>
                             </tr>
                             <tr>
-                            	<td width="100" align="left" height="30">真实姓名：</td>
+                                <td width="100" align="left" height="30">真实姓名：</td>
                                 <td width="578" align="left" height="30"><input type="text" th:value="${entity.name}" class="finput3" id="name" name="name" value="" placeholder="请输入真实姓名"/></td>
                             </tr>
                             <tr>
                                 <td width="100" align="left" height="30">联系方式：</td>
-                                <td width="578" align="left" height="30"><input type="text" th:value="${entity.linkTel}" class="finput3" id="linkTel" name="linkTel" value="" placeholder="请输入真实姓名"/></td>
+                                <td width="578" align="left" height="30"><input type="text" th:value="${entity.linkTel}" class="finput3" id="linkTel" name="linkTel" value="" placeholder="请输入电话号码"/></td>
                             </tr>
                             <tr>
-                            	<td width="100" align="left" height="30">身份证号码：</td>
+                                <td width="100" align="left" height="30">身份证号码：</td>
                                 <td width="578" align="left" height="30"><input type="text" th:value="${entity.icCode}" class="finput3" id="icCode" name="icCode" value="" placeholder="请输入身份证号码"/></td>
                             </tr>
                             <tr>
@@ -101,46 +107,24 @@
                                 </td>
                             </tr>
                             <tr>
-                            	<td colspan="2" height="30">提示：<span class="fspan9"> 您的资料将被默认保存为第一游客信息，请您完整如实填写，避免资料不实带来的不便。</span></td>
+                                <td colspan="2" height="30">提示：<span class="fspan9"> 您的资料将被默认保存为第一游客信息，请您完整如实填写，避免资料不实带来的不便。</span></td>
                             </tr>
                             <tr>
-                            	<td colspan="2" height="30"><button type="submit"><input type="image" src="images/fbtn2.png"/></button></td>
+                                <td colspan="20" height="30"  style="flex-flow: column; padding: 20px"><button type="submit" class="btn btn-primary">点击修改</button></td>
                             </tr>
                         </table>
-                    </p>
-                </form>
+                        </p>
+                    </form>
                 </div>
             </div>
+
         </div>
     </div>
-</div>
-<!--<div class="footer1">
+
 
 </div>
-<style>
-    .footer1{
-
-        height: 30px;
-
-        width: 100%;
-
-        background-color: #ddd;
-
-        position: fixed;
-
-        bottom: 0;
-
-    }
-</style>-->
-<!--<div class="footer_w">
-    <div class="footer clearfix">
-        <div class="footer_c">
-          <p>地址：哈佛大学 &nbsp;| &nbsp;服务热线：13559778312 &nbsp; | &nbsp;传真：13559778312  备案号：13559778312</p>
-            <p> 中国梦想旅游发展有限公司 All Rights Reserved. 技术支持：<a href="#">哈佛大学</a></p>
-        </div>
-        <div class="f_logo"><img src="images/b_logo.jpg"/></div>
-        <br style="clear:both"/>
-    </div>
-</div>-->
+<!--底部--->
+<div th:replace="navigation :: foot"></div>
+<!--底部--->
 </body>
 </html>

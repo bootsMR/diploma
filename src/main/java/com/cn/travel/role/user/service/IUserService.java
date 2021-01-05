@@ -13,6 +13,11 @@ public interface IUserService {
     public void save(User user)throws Exception;
 //查找用户名
     public User findByUserName(String userName)throws Exception;
+//查找用户id
+    public User findById(String id)throws Exception;
+
+//修改用户
+    public void update(User user)throws Exception;
 
 
 }

@@ -27,6 +27,16 @@ public class UserSqlProvider {
     public String findByUserName() {
         return "SELECT * FROM t_pz_user WHERE USER_NAME = #{userName} AND DELETE_STATUS=0";
     }
+    //查找用户id
+    public String findById() {
+
+        return "SELECT * FROM t_pz_user WHERE ID = #{id} AND DELETE_STATUS=0";
+    }
+    //修改用户
+    public String update(){
+        return "UPDATE t_pz_user SET MODIFY_USER_ID=#{modifyUserId},MODIFY_TIME=NOW(),USER_NAME=#{userName}, " +
+                "PASSWORD=#{password},LINK_TEL=#{linkTel},NAME=#{name},IC_CODE=#{icCode},STATE=#{state},PROVINCE=#{province} WHERE id=#{id}";
+    }
 
 
 }

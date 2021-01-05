@@ -30,7 +30,19 @@ public interface UserDao extends BaseDao<User> {
     //查找用户名
     @SelectProvider(type = UserSqlProvider.class, method = "findByUserName")
     public User findByUserName(@Param("userName") String userName);
+/**
+ * @title 用户中心模块
+ * @description 
+ * @author ：linkong
+ * @updateTime 2021/1/5 18:52
+ * @return 
+ * @throws 
+ */
+    //查找用户id
+    @SelectProvider(type = UserSqlProvider.class, method = "findById")
+    public User findById(@Param("id") String id);
 
-
-
+    //修改用户
+    @UpdateProvider(type = UserSqlProvider.class, method = "update")
+    public void update(User user);
 }

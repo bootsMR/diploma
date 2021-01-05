@@ -102,6 +102,8 @@ public class UserPortalController extends BaseController {
         redirectAttributes.addFlashAttribute("message","注册成功，请登陆!");
         return new ModelAndView(new RedirectView("/goLogin"));
     }
+    
+
 
 }
 

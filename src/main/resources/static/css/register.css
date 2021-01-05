@@ -1,6 +1,6 @@
 .b_wrap{width:980px;margin:0 auto;}
 
-.current{background:url(../images/b_line.jpg) repeat-x left bottom;width:980px;height:35px;line-height:35px;}
+.current{background:url(../images/portal_register/b_line.jpg) repeat-x left bottom;width:980px;height:35px;line-height:35px;}
 .current span{background:url(../images/home_icon.jpg) no-repeat left center;padding-left:25px;height:35px;line-height:35px;display:inline-block;}
 
 .regin_w{border:1px solid #ddd;border-top:2px solid #33b2e7;width:980px;margin:8px auto;background:#fff;}

@@ -23,9 +23,17 @@ public class UserService implements IUserService {
     public void save(User user) throws Exception {
         userDao.save(user);
     }
-
+    @Override
     public User findByUserName(String userName) throws Exception {
         return userDao.findByUserName(userName);
+    }
+    @Override
+    public User findById(String id)throws Exception{
+        return userDao.findById(id);
+    }
+    @Override
+    public void update(User user)throws Exception{
+        userDao.update(user);
     }
 
 
