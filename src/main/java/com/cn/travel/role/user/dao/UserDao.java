@@ -1,7 +1,6 @@
 package com.cn.travel.role.user.dao;
 
 import com.cn.travel.base.dao.BaseDao;
-import com.cn.travel.role.user.entity.Porvice;
 import com.cn.travel.role.user.entity.User;
 import com.cn.travel.role.user.provider.UserSqlProvider;
 import org.apache.ibatis.annotations.*;
@@ -24,12 +23,14 @@ public interface UserDao extends BaseDao<User> {
     @SelectProvider(type = UserSqlProvider.class, method = "login")
     public User login(@Param("userName") String userName, @Param("password") String password);
 
-    @SelectProvider(type = UserSqlProvider.class, method = "findList")
-    public List<User> findList();
 
     @SelectProvider(type = UserSqlProvider.class,method = "save")
     public void save(User user);
 
+    //查找用户名
     @SelectProvider(type = UserSqlProvider.class, method = "findByUserName")
     public User findByUserName(@Param("userName") String userName);
+
+
+
 }

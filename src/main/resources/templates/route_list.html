@@ -1,783 +1,119 @@
-﻿<!DOCTYPE html>
-
-<html lang="en">
-
-
-
+﻿<html lang="zh-CN">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-
-    <meta charset="UTF-8">
-
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-
-    <title>中南旅游-搜索</title>
-
-    <link rel="stylesheet" type="text/css" href="css/common.css">
-
-    <link rel="stylesheet" href="css/search.css">
-
-    <script src="js/jquery-3.3.1.js"></script>
-
-    <script src="js/getParameter.js"></script>
-
-    <script>
-
-        $(function () {
-
-            //获取cid的参数值
-
-            var cid = getParameter("cid");
-
-            var rname=getParameter("rname");
-
-            if(rname){
-
-
-                //url解码
-                rname = window.decodeURIComponent(rname);
-
-            }
-
-
-
-            load(cid,null,rname);
-
-
-
-        });
-
-        function load(cid,currentPage,rname) {
-
-            var rname=getParameter("rname");
-
-
-
-            $.get("route/queryPage",{cid:cid,currentPage:currentPage,rname:rname},function (pb) {
-
-
-
-                //设置相关页数和记录数
-
-                $("#totalCount").html(pb.totalCount);//总记录数
-
-                $("#totalPage").html(pb.totalPage);//总页码
-
-                /*
-          *   <li><a href="">首页</a></li>
-
-                  <li class="threeword"><a href="#">上一页</a></li>
-
-                  <li><a href="#">1</a></li>
-
-                  <li><a href="#">2</a></li>
-
-                  <li><a href="#">3</a></li>
-
-                  <li><a href="#">4</a></li>
-
-                  <li><a href="#">5</a></li>
-
-                  <li><a href="#">6</a></li>
-
-                  <li><a href="#">7</a></li>
-
-                  <li><a href="#">8</a></li>
-
-                  <li><a href="#">9</a></li>
-
-                  <li><a href="#">10</a></li>
-
-                  <li class="threeword"><a href="javascript:;">下一页</a></li>
-
-                  <li class="threeword"><a href="javascript:;">末页</a></li>*/
-
-
-                var lis="";
-                    //当前页码
-                var currentPage=pb.currentPage;
-
-                //计算上一页码
-
-                var beforeNum=currentPage-1;
-
-                //如果到第一页时按上一页仍为第一页
-
-                if(beforeNum<=0) {
-
-                    beforeNum = 1;
-
-                }
-
-                var firstPage='<li onclick="load('+cid+',1,\''+rname+'\')"><a href="javascript:load('+cid+',1,\''+rname+'\')">首页</a></li>';
-
-                var beforePage = '<li class="threeword" onclick="load(' + cid + ',' + beforeNum + ',\''+rname+'\')"><a href="javascript:load('+cid+','+beforeNum+'\''+rname+'\')">上一页</a></li>';
-
-                lis+=firstPage;
-
-                lis+=beforePage;
-
-                //底下页码栏只展示10个页码
-
-                var begin;
-
-                var end;
-                //1.要显示10个页码
-
-                if(pb.totalPage < 10){
-
-                    //总页码不够10页
-                    begin = 1;
-
-                    end = pb.totalPage;
-
-                }else{
-
-                    //总页码超过10页
-
-
-
-                    begin = pb.currentPage - 5 ;
-
-                    end = pb.currentPage + 4 ;
-
-
-
-                    //2.如果前边不够5个，后边补齐10个
-
-                    if(begin < 1){
-
-                        begin = 1;
-
-                        end = begin + 9;
-
-                    }
-
-
-
-                    //3.如果后边不足4个，前边补齐10个
-
-                    if(end > pb.totalPage){
-
-                        end = pb.totalPage;
-
-                        begin = end - 9 ;
-
-                    }
-
-                }
-
-
-
-
-                for (var i = begin; i<=end ; i++) {
-                    //判断当前页码时候等于i,当前页码带样式,不是当前页码不带样式
-
-                    if(i==pb.currentPage){
-
-                        var li='<li class="curPage" onclick="load('+cid+','+i+',\''+rname+'\')" ><a href="javascript:load('+cid+','+i+',\''+rname+'\')">'+i+'</a></li>';
-
-                    }else {
-
-                        var li='<li onclick="load('+cid+','+i+',\''+rname+'\')"><a href="javascript:load('+cid+','+i+',\''+rname+'\')">'+i+'</a></li>';
-
-                    }
-
-                    lis+=li;
-
-                }
-
-                window.scrollTo(100,180);
-
-                /*for (var i = 1; i <=pb.totalPage ; i++) {
-
-                    if(i==pb.currentPage){
-
-                        var li='<li class="curPage" onclick="load('+cid+','+i+')" ><a href="javascript:load('+cid+','+i+')">'+i+'</a></li>';
-
-                    }else {
-
-                        var li='<li onclick="load('+cid+','+i+')"><a href="javascript:load('+cid+','+i+')">'+i+'</a></li>';
-
-                    }
-
-                    lis+=li;
-
-                }*/
-
-
-
-                var nextNum=currentPage+1;
-
-                var totalPage=pb.totalPage;
-
-                if(nextNum>=totalPage) {
-
-                    nextNum = totalPage;
-
-                }
-
-
-
-                var nextPage='<li class="threeword" onclick="load('+cid+','+nextNum+')"><a href="javascript:load('+cid+','+nextNum+')">下一页</a></li>';
-
-                var lastPage='<li class="threeword" onclick="load('+cid+','+totalPage+')"><a href="javascript:load('+cid+','+totalPage+')">末页</a></li>';
-
-                lis+=nextPage;
-
-                lis+=lastPage;
-
-
-
-                $("#pageNum").html(lis);
-
-
-
-                //列表旅游信息的展示
-
-                /*<li>
-
-                            <div class="img"><img src="images/04-search_03.jpg" alt=""></div>
-
-                            <div class="text1">
-
-                                <p>【减100元 含除夕/春节出发】广州增城三英温泉度假酒店/自由行套票</p>
-
-                                <br/>
-
-                                <p>1-2月出发，网付立享￥1099/2人起！爆款位置有限，抢完即止！</p>
-
-                            </div>
-
-                            <div class="price">
-
-                                <p class="price_num">
-
-                                    <span>&yen;</span>
-
-                                    <span>299</span>
-
-                                    <span>起</span>
-
-                                </p>
-
-                                <p><a href="route_detail.html">查看详情</a></p>
-
-                            </div>
-
-                        </li>
-
-                   */
-
-                var list_lis="";
-
-                for (var i = 0; i < pb.list.length; i++) {
-
-                    var list=pb.list[i];
-
-                    var list_li='<li>\n' +
-
-                        '                            <div class="img" ><img src="'+list.rimage+'" style="width: 299px"></div>\n' +
-
-                        '                            <div class="text1">\n' +
-
-                        '                                <p>'+list.rname+'</p>\n' +
-
-                        '                                <br/>\n' +
-
-                        '                                <p>'+list.routeIntroduce+'</p>\n' +
-
-                        '                            </div>\n' +
-
-                        '                            <div class="price">\n' +
-
-                        '                                <p class="price_num">\n' +
-
-                        '                                    <span>&yen;</span>\n' +
-
-                        '                                    <span>'+list.price+'</span>\n' +
-
-                        '                                    <span>起</span>\n' +
-
-                        '                                </p>\n' +
-
-                        '                                <p><a href="route_detail.html?rid='+pb.list[i].rid+'">查看详情</a></p>\n' +
-
-                        '                            </div>\n' +
-
-                        '                        </li>';
-
-                    list_lis+=list_li;
-
-
-
-                }
-
-                $("#list").html(list_lis);
-
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>中南旅游网</title>
+    <link rel="stylesheet" type="text/css" href="../static/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../static/css/travelRoute.css">
+    <link rel="stylesheet" type="text/css" href="../static/css/common.css">
+    <script type="text/javascript" src="../static/js/imgtoggle.js"></script>
+    <script src="../static/js/jquery-3.3.1.js"></script>
+    <script src="../static/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+        $(function(){
+            var wweya_li =$("div.tab_menu ul li");
+            wweya_li.click(function(){
+                $(this).addClass("selected")
+                    .siblings().removeClass("selected");
+                var index =  wweya_li.index(this);
+                $("div.tab_box > div")
+                    .eq(index).show(100)
+                    .siblings().hide();
+            }).hover(function(){
+                $(this).addClass("hover");
+            },function(){
+                $(this).removeClass("hover");
             });
-
-        }
-
-
-
-
-
+        });
     </script>
-
 </head>
-
 <body>
+<!--导航栏--->
+<div th:replace="navigation :: copy"></div>
+<!--导航栏--->
 
-<!--引入头部-->
-
-<div id="header"></div>
-
-<div class="page_one">
-
-    <div class="contant">
-
-        <div class="crumbs">
-
-            <img src="images/search.png" alt="">
-
-            <p>中南旅行><span>搜索结果</span></p>
-
-        </div>
-
-        <div class="xinxi clearfix">
-
-            <div class="left">
-
-                <div class="header">
-
-                    <span>商品信息</span>
-
-                    <span class="jg">价格</span>
-
+<div class="b_wrap">
+    <div class="current"><span>当前所在地：</span><a th:href="@{/index}">首页</a> >> <a th:href="@{/travelRoute}">旅游路线</a> </div>
+    <div class="clumn_w clearfix">
+        <div class="clumn_r01">
+            <div class="js_box">
+                <div class="js_tit clearfix">
+                    <form id="pageForm" name="pageForm" action="/travelRoute" method="post">
+                        <input type="hidden" id="count" name="count" th:value="${pageParam.count}"/>
+                        <input type="hidden" id="pageNumber" name="pageNumber" th:value="${pageParam.pageNumber}"/>
+                        <input type="hidden" id="size" name="size" th:value="${pageParam.size}"/>
+                        <input type="hidden" id="pageSize" name="pageSize" th:value="${pageParam.pageSize}"/>
+                        <div class="fy_w"><a href="#" th:text="${pageParam.pageNumber}+'/'+${pageParam.size}+'页'"> </a>
+                            <a class="previousPage ">上一页</a>
+                            <a class="toPageOne ">首页</a>
+                            <a class="nextPage ">下一页</a>
+                            <a class="toPageLast ">尾页</a>
+                        </div>
+                    </form>
                 </div>
-
-                <ul id="list">
-
-                    <li>
-
-                        <div class="img"><img src="images/04-search_03.jpg" alt=""></div>
-
-                        <div class="text1">
-
-                            <p>【减100元 含除夕/春节出发】广州增城三英温泉度假酒店/自由行套票</p>
-
-                            <br/>
-
-                            <p>1-2月出发，网付立享￥1099/2人起！爆款位置有限，抢完即止！</p>
-
+                <div class="js_wrap claerdix">
+                    <div class="js_con clearfix" th:each="var,iterStat: ${pageData}">
+                        <div class="js_l"><a  th:href="@{/travelRoutePortalView(id=${var.id})}">
+                            <img th:src="${var.imgUrl}" style=" border: 0;
+                    vertical-align: middle;
+                     width: 200px;
+                     height: 75px;"/></a></div>
+                        <div class="js_c">
+                            <p><b><a  th:href="@{/travelRoutePortalView(id=${var.id})}" th:text="${var.title}"></a></b></p>
+                            <p  th:text="'出团日期：'+${var.startTime}+'至'+${var.endTime}"></p>
+                            <p th:text="'简介：'+${var.intro}"></p>
                         </div>
-
-                        <div class="price">
-
-                            <p class="price_num">
-
-                                <span>&yen;</span>
-
-                                <span>299</span>
-
-                                <span>起</span>
-
-                            </p>
-
-                            <p><a href="route_detail.html">查看详情</a></p>
-
+                        <div class="js_r">
+                            <p><span class="fn_o">￥</span><b th:text="${var.price}"></b>起</p>
                         </div>
-
-                    </li>
-
-                    <li>
-
-                        <div class="img"><img src="images/04-search_03.jpg" alt=""></div>
-
-                        <div class="text1">
-
-                            <p>浪花朵朵旅行普吉岛丛林飞跃空中飞人探险游中文服务泰国旅游</p>
-
-                            <br/>
-
-                            <p>1-2月出发，网付立享￥1099/2人起！爆款位置有限，抢完即止！</p>
-
-                        </div>
-
-                        <div class="price">
-
-                            <p class="price_num">
-
-                                <span>&yen;</span>
-
-                                <span>899</span>
-
-                                <span>起</span>
-
-                            </p>
-
-                            <p><a href="route_detail.html">查看详情</a></p>
-
-                        </div>
-
-                    </li>
-
-                    <li>
-
-                        <div class="img"><img src="images/04-search_03.jpg" alt=""></div>
-
-                        <div class="text1">
-
-                            <p>黑妞皇家旅行普吉岛攀牙湾大船星光之旅皮划艇日落休闲特色体验</p>
-
-                            <br/>
-
-                            <p>1-2月出发，网付立享￥1099/2人起！爆款位置有限，抢完即止！</p>
-
-                        </div>
-
-                        <div class="price">
-
-                            <p class="price_num">
-
-                                <span>&yen;</span>
-
-                                <span>999</span>
-
-                                <span>起</span>
-
-                            </p>
-
-                            <p><a href="route_detail.html">查看详情</a></p>
-
-                        </div>
-
-                    </li>
-
-                    <li>
-
-                        <div class="img"><img src="images/04-search_03.jpg" alt=""></div>
-
-                        <div class="text1">
-
-                            <p>浪花朵朵旅行普吉岛皇帝岛珊瑚岛香蕉船拖拽伞水上项目</p>
-
-                            <br/>
-
-                            <p>1-2月出发，网付立享￥1099/2人起！爆款位置有限，抢完即止！</p>
-
-                        </div>
-
-                        <div class="price">
-
-                            <p class="price_num">
-
-                                <span>&yen;</span>
-
-                                <span>99</span>
-
-                                <span>起</span>
-
-                            </p>
-
-                            <p><a href="route_detail.html">查看详情</a></p>
-
-                        </div>
-
-                    </li>
-
-                    <li>
-
-                        <div class="img"><img src="images/04-search_03.jpg" alt=""></div>
-
-                        <div class="text1">
-
-                            <p>环游记 泰国清迈Lila massage女子监狱spa 丽菈泰式按摩马杀鸡</p>
-
-                            <br/>
-
-                            <p>1-2月出发，网付立享￥1099/2人起！爆款位置有限，抢完即止！</p>
-
-                        </div>
-
-                        <div class="price">
-
-                            <p class="price_num">
-
-                                <span>&yen;</span>
-
-                                <span>199</span>
-
-                                <span>起</span>
-
-                            </p>
-
-                            <p><a href="route_detail.html">查看详情</a></p>
-
-                        </div>
-
-                    </li>
-
-                    <li>
-
-                        <div class="img"><img src="images/04-search_03.jpg" alt=""></div>
-
-                        <div class="text1">
-
-                            <p>【减100元 含除夕/春节出发】广州增城三英温泉度假酒店/自由行套票</p>
-
-                            <br/>
-
-                            <p>1-2月出发，网付立享￥1099/2人起！爆款位置有限，抢完即止！</p>
-
-                        </div>
-
-                        <div class="price">
-
-                            <p class="price_num">
-
-                                <span>&yen;</span>
-
-                                <span>899</span>
-
-                                <span>起</span>
-
-                            </p>
-
-                            <p><a href="route_detail.html">查看详情</a></p>
-
-                        </div>
-
-                    </li>
-
-                    <li>
-
-                        <div class="img"><img src="images/04-search_03.jpg" alt=""></div>
-
-                        <div class="text1">
-
-                            <p>【减100元 含除夕/春节出发】广州增城三英温泉度假酒店/自由行套票</p>
-
-                            <br/>
-
-                            <p>1-2月出发，网付立享￥1099/2人起！爆款位置有限，抢完即止！</p>
-
-                        </div>
-
-                        <div class="price">
-
-                            <p class="price_num">
-
-                                <span>&yen;</span>
-
-                                <span>1199</span>
-
-                                <span>起</span>
-
-                            </p>
-
-                            <p><a href="route_detail.html">查看详情</a></p>
-
-                        </div>
-
-                    </li>
-
-                    <li>
-
-                        <div class="img"><img src="images/04-search_03.jpg" alt=""></div>
-
-                        <div class="text1">
-
-                            <p>泰国芭提雅三合一日游芭提雅蒂芬妮人妖秀成人门票bigeye含接送</p>
-
-                            <br/>
-
-                            <p>1-2月出发，网付立享￥1099/2人起！爆款位置有限，抢完即止！</p>
-
-                        </div>
-
-                        <div class="price">
-
-                            <p class="price_num">
-
-                                <span>&yen;</span>
-
-                                <span>1589</span>
-
-                                <span>起</span>
-
-                            </p>
-
-                            <p><a href="route_detail.html">查看详情</a></p>
-
-                        </div>
-
-                    </li>
-
-                </ul>
-
-                <div class="page_num_inf">
-
-                    <i></i> 共
-
-                    <span id="totalPage">13</span>页<span id="totalCount">130</span>条
-
+                    </div>
                 </div>
-
-                <div class="pageNum">
-
-                    <ul id="pageNum">
-
-                        <li><a href="">首页</a></li>
-
-                        <li class="threeword"><a href="#">上一页</a></li>
-
-                        <li><a href="#">1</a></li>
-
-                        <li><a href="#">2</a></li>
-
-                        <li><a href="#">3</a></li>
-
-                        <li><a href="#">4</a></li>
-
-                        <li><a href="#">5</a></li>
-
-                        <li><a href="#">6</a></li>
-
-                        <li><a href="#">7</a></li>
-
-                        <li><a href="#">8</a></li>
-
-                        <li><a href="#">9</a></li>
-
-                        <li><a href="#">10</a></li>
-
-                        <li class="threeword"><a href="javascript:;">下一页</a></li>
-
-                        <li class="threeword"><a href="javascript:;">末页</a></li>
-
-                    </ul>
-
-                </div>
-
             </div>
 
-            <div class="right">
 
-                <div class="top">
 
-                    <div class="hot">HOT</div>
-
-                    <span>热门推荐</span>
-
-                </div>
-
-                <ul>
-
-                    <li>
-
-                        <div class="left"><img src="images/04-search_09.jpg" alt=""></div>
-
-                        <div class="right">
-
-                            <p>清远新银盏温泉度假村酒店/自由行套...</p>
-
-                            <p>网付价<span>&yen;<span>899</span>起</span>
-
-                            </p>
-
-                        </div>
-
-                    </li>
-
-                    <li>
-
-                        <div class="left"><img src="images/04-search_09.jpg" alt=""></div>
-
-                        <div class="right">
-
-                            <p>清远新银盏温泉度假村酒店/自由行套...</p>
-
-                            <p>网付价<span>&yen;<span>899</span>起</span>
-
-                            </p>
-
-                        </div>
-
-                    </li>
-
-                    <li>
-
-                        <div class="left"><img src="images/04-search_09.jpg" alt=""></div>
-
-                        <div class="right">
-
-                            <p>清远新银盏温泉度假村酒店/自由行套...</p>
-
-                            <p>网付价<span>&yen;<span>899</span>起</span>
-
-                            </p>
-
-                        </div>
-
-                    </li>
-
-                    <li>
-
-                        <div class="left"><img src="images/04-search_09.jpg" alt=""></div>
-
-                        <div class="right">
-
-                            <p>清远新银盏温泉度假村酒店/自由行套...</p>
-
-                            <p>网付价<span>&yen;<span>899</span>起</span>
-
-                            </p>
-
-                        </div>
-
-                    </li>
-
-                    <li>
-
-                        <div class="left"><img src="images/04-search_09.jpg" alt=""></div>
-
-                        <div class="right">
-
-                            <p>清远新银盏温泉度假村酒店/自由行套...</p>
-
-                            <p>网付价<span>&yen;<span>899</span>起</span>
-
-                            </p>
-
-                        </div>
-
-                    </li>
-
-                </ul>
-
-            </div>
 
         </div>
-
     </div>
-
 </div>
+<!--底部--->
+<div th:replace="navigation :: foot"></div>
+<!--底部--->
+<script>
+    $(".previousPage").click(function(){
+        if(parseInt($("#pageNumber").val())==1){
+            $("#pageNumber").val(1);
+            return;
+        }else{
+            $("#pageNumber").val(parseInt($("#pageNumber").val())-1);
+            $("#pageForm").submit();
+        }
+    })
 
+    $(".nextPage").click(function(){
+        if(parseInt($("#pageNumber").val())==parseInt($("#size").val())){
+            $("#pageNumber").val(parseInt($("#size").val()));
+            /* alert("xia yi ye1 ");*/
+            return;
+        }else{
+            $("#pageNumber").val(parseInt($("#pageNumber").val())+1);
+            /*alert("xia yi ye2 ");*/
+            $("#pageForm").submit();
+        }
+    })
 
+    $(".toPageOne").click(function(){
+        $("#pageNumber").val(1);
+        $("#pageForm").submit();
+    })
 
-<!--引入头部-->
+    $(".toPageLast").click(function(){
+        $("#pageNumber").val(parseInt($("#size").val()));
+        $("#pageForm").submit();
+    })
 
-<div id="footer"></div>
-
-<!--导入布局js，共享header和footer-->
-
-<script type="text/javascript" src="js/include.js"></script>
-
+</script>
 </body>
-
-
-
 </html>

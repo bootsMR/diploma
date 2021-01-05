@@ -13,7 +13,13 @@ import org.springframework.web.servlet.view.RedirectView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-
+/**
+ * @author admin
+ * @version 1.0.0
+ * @ClassName UserPortalController.java
+ * @Description TODO
+ * @createTime 2020年11月03日  14:50:00
+ */
 @Controller
 public class UserPortalController extends BaseController {
 

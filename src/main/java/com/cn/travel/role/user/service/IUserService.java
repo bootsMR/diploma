@@ -6,20 +6,13 @@ import java.util.List;
 
 public interface IUserService {
 
-/**
- * @title 前台页面登录
- * @description 
- * @author ：linkong
- * @updateTime 2020/11/15 15:54 
- * @return 
- * @throws 
- */
+//登录
     public User login(String userName, String password)throws Exception;
 
-    public List<User> findList()throws Exception;
-
+//注册
+    public void save(User user)throws Exception;
+//查找用户名
     public User findByUserName(String userName)throws Exception;
 
-    public void save(User user)throws Exception;
 
 }

@@ -1,0 +1,23 @@
+<!--旅游路线-->
+.clumn_w{margin-top:8px;}
+.clumn_w .clumn_l{width:260px;}
+.clumn_w .clumn_r{float:left;}
+.clumn_l .clumn{border:1px solid #dddddd;background:#fff;padding-bottom:12px;margin-bottom:8px;}
+.clumn .clumn_tit{
+    font-size:16px;
+    font-weight:600;
+    padding-left:12px;
+    height:40px;
+    line-height:40px;
+    color:#666666;
+    border-bottom:1px solid #ddd;
+}
+.js_wrap{padding:0 12px 28px 12px;}
+.js_wrap .js_con{border-bottom:1px solid #ddd;padding-bottom:10px;margin-top:10px;}
+.js_con .js_l{float:left;}
+.js_con .js_c b{font-size:14px;}
+.js_con .js_c p{height:26px;line-height:26px;}
+.js_con .js_c{float:left;margin-left:10px;}
+.js_con .js_c span{color:#f60;}
+.js_con .js_r{float:right;margin-right:15px;}
+.js_con .js_r b{font-size:28px;color:#f60;}

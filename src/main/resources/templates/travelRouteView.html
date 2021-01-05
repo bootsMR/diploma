@@ -1,15 +1,16 @@
 ﻿<!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>中国梦想游--旅游路线页</title>
-<link href="css/style.css" rel="stylesheet" type="text/css" />
-<link href="css/common.css" rel="stylesheet" type="text/css" />
-    <link rel="stylesheet" href="/static/css/bootStrap/bootstrap.min.css">
-    <link rel="stylesheet" href="/static/css/bootStrap/bootstrap-theme.css">
-    <script type="text/javascript" src="/static/js/jquery-1.9.1.min.js"></script>
-    <script src=/static/css/bootStrap/bootstrap.min.js" type="application/javascript"></script>
-<script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>中南旅游网</title>
+    <link rel="stylesheet" type="text/css" href="../static/css/travelView.css">
+    <link rel="stylesheet" type="text/css" href="../static/css/bootstrap.min.css">
+    <link  rel="stylesheet" type="text/css" href="../static/css/common.css"/>
+    <script src="../static/js/imgtoggle.js"></script>
+    <script src="../static/js/jquery-3.3.1.js"></script>
+    <script src="../static/js/bootstrap.min.js"></script>
 <script type="text/javascript"> 
     $(function(){
         var wweya_li =$("div.tab_menu ul li");
@@ -66,38 +67,35 @@
 
 
             <div class="xq_wrap clearfix">
-              <div class="xq_left"><img th:src="${entity.imgUrl}"/></div>
-              <div class="xq_right">
-                <div class="xq_detail">
-                 <!-- <p th:text="'产品编号：'+${entity.productCode}"></p>-->
-                  <p th:text="'出发地点：'+${entity.startSite}"></p>
-                  <p th:text="'结束地点：'+${entity.endSite}"></p>
-                  <p th:text="'旅游价格：￥'+${entity.price}"></p>
-                  <p th:text="'出团日期：'+${entity.startTime}+'至'+${entity.endTime}"></p>
-                  <!--<p th:text="'持续时间：'+${entity.day}+'天'"></p>-->
-               <!--   <p th:text="'出团日期：'+${entity.startTime}"></p>-->
-                    <p th:text="'路线简介：'+${entity.intro}"></p>
+                <div class="xq_left"><img th:src="${entity.imgUrl}"/></div>
+                <div class="xq_right">
+                    <div class="xq_detail">
+                        <p th:text="'出发地点：'+${entity.startSite}"></p>
+                        <p th:text="'结束地点：'+${entity.endSite}"></p>
+                        <p th:text="'旅游价格：￥'+${entity.price}"></p>
+                        <p th:text="'出团日期：'+${entity.startTime}+'至'+${entity.endTime}"></p>
+                        <p th:text="'路线简介：'+${entity.intro}"></p>
+                    </div>
+                    <div class="xq_button"><a th:if="${session.userName!=null}" th:href="@{/travelRouteCreatOrder(id=${entity.id})}">
+                        <img src="images/order_button.jpg"/></a>
+                        <p th:if="${session.userName==null}"><font color="red"> 预定请先登陆</font></p>
+                        <p th:if="${CreatSuccess==true}"><font color="red">预定成功，请前往会员中心-我的订单查看订单</font></p></div>
                 </div>
-                <!--<div class="share">
-                    <div class="bshare-custom"><strong>分享到&nbsp;&nbsp;</strong><a title="分享到QQ空间" class="bshare-qzone"></a><a title="分享到新浪微博" class="bshare-sinaminiblog"></a><a title="分享到人人网" class="bshare-renren"></a><a title="分享到腾讯微博" class="bshare-qqmb"></a><a title="分享到网易微博" class="bshare-neteasemb"></a><a title="更多平台" class="bshare-more bshare-more-icon more-style-addthis"></a><span class="BSHARE_COUNT bshare-share-count">0</span></div>
-                </div>-->
-                <div class="xq_button"><a th:if="${session.userName!=null}" th:href="@{/travelRouteCreatOrder(id=${entity.id})}">
-                    <img src="images/order_button.jpg"/></a>
-                    <p th:if="${session.userName==null}"><font color="red"> 预定请先登陆</font></p>
-                    <p th:if="${CreatSuccess==true}"><font color="red">预定成功，请前往会员中心-我的订单查看订单</font></p></div>
-              </div>
             </div>
             <div class="xq_wrap">
-              <div class="tab_menu xq_menu">
-                <ul class="xq_ul">
-                    <li class="selected">路线导航</li>
-                </ul>
-              </div>
-              <div id="allmap" style="height:500px;width:100%;" class="tab_box"></div>
+                <div class="tab_menu xq_menu">
+                    <ul class="xq_ul">
+                        <li class="selected">路线导航</li>
+                    </ul>
+                </div>
+                <div id="allmap" style="height:500px;width:100%;" class="tab_box"></div>
             </div>
         </div>
     </div>
 </div>
+<!--底部--->
+<div th:replace="navigation :: foot"></div>
+<!--底部--->
 
 <script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/buttonLite.js#style=-1&amp;uuid=&amp;pophcol=3&amp;lang=zh"></script>
 <script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/bshareC0.js"></script>
@@ -119,5 +117,6 @@
         driving.search(start,end);
          }
 </script>
+
 </body>
 </html>

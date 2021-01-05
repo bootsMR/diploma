@@ -24,7 +24,7 @@ public class UserCenterController extends BaseController {
     @RequestMapping("/test")
     public ModelAndView test(){
         ModelAndView mv = this.getModeAndView();
-        mv.setViewName("/test");
+        mv.setViewName("/route_list");
         return mv;
     }
 

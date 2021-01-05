@@ -17,19 +17,38 @@ import java.util.concurrent.locks.ReentrantLock;
 public class BaseController {
     private static Lock lock = new ReentrantLock();
     private static List<ModelAndView> modeAndViewsPool = Lists.newArrayListWithCapacity(20);
-    /**
-     * 重定向标记(客户端行为)
-     */
+ /**
+  * @title
+  * @description 重定向标记(客户端行为)
+  * @author ：linkong
+  * @updateTime 2021/12/4 15:26
+  * @return
+  * @throws
+  */
+
     public static final String REDIRECT = "redirect:";
+
+
     /**
-     * 数据转换组件
+     * @title
+     * @description  数据转换组件
+     * @author ：linkong
+     * @updateTime 2021/12/4 15:26
+     * @return
+     * @throws
      */
+
     @Autowired
     protected ConversionService conversionService;
 
+
     /**
-     * 取ModelAndView
+     * @title
+     * @description 取ModelAndView
+     * @author ：linkong
+     * @updateTime 2021/12/4 15:26
      * @return
+     * @throws
      */
    public static ModelAndView getModeAndView() {
         try {
@@ -43,10 +62,13 @@ public class BaseController {
         return new ModelAndView();
     }
 
+
     /**
-     * 邦定表单数据并且校验数据
-     * @param request
-     * @param entity
+     * @title
+     * @description 邦定表单数据并且校验数据
+     * @author ：linkong
+     * @updateTime 2021/12/4 15:25
+     * @return
      * @throws ConstraintViolationException
      */
     protected void bindValidateRequestEntity(HttpServletRequest request, Object entity) throws ConstraintViolationException {

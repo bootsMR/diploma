@@ -1,0 +1,101 @@
+
+@charset "utf-8";
+/* CSS Document */
+html{color:#333;}
+body{font-family:"Helvetica Neue",Helvetica,Arial,Verdana,Geneva,sans-serif,"宋体","微软雅黑";color:#666;font-size:12px;}
+html, body,div,span, object, iframe,
+dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,
+pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td,hr,button
+{margin:0;padding:0;}
+input,select,textarea{font-size:100%;}
+table{border-collapse:collapse;border-spacing:0;}
+th{text-align:inherit;}
+caption,th{text-align:left;}
+fieldset,img,a img{border:0;}
+abbr,acronym{border:0;font-variant:normal;}
+legend{color:#000;}
+iframe{display:block;}
+abbr,acronym{border:0;font-variant:normal;}
+del{text-decoration:line-through;}
+address,caption,cite,code,dfn,em,strong,th,var{font-style:normal;font-weight: normal;}
+ol,ul,li{list-style:none;}
+q:before,q:after{content:'';}
+sup {vertical-align:text-top;}
+sub {vertical-align:text-bottom;}
+a{color:#666;}
+a:hover {text-decoration:none;color:#f00;}
+a.block { display: block; cursor: pointer; }
+a.block:hover { text-decoration: none; }
+ins,a {text-decoration:none;}
+.clearfix:after{clear: both;content: ' ';display: block;font-size: 0;line-height: 0;visibility: hidden;width: 0;height: 0;}
+.clearfix{display: inline-block;}
+* html .clearfix{height: 1%;}
+.clearfix{display: block;*zoom:1;}
+.clear{clear: both;display: block;overflow: hidden;visibility: hidden;width: 0;height: 0;}
+.fn-hide{display:none;}
+.fn-left,.fn-right{display:inline;}
+.fn-left{float:left;}
+.fn-right{float:right;}
+em{font-style:italic;}
+strong{font-weight:bold;}
+article,aside,details,figcaption,figure,
+footer,header,hgroup,menu,nav,section {display:block;}
+pre,code,kbd,samp,tt{font-family:monospace;line-height:100%;}
+.fd-gray{color:#666;}
+.pointer{cursor:pointer;}
+.f_red{ color:#d40000;}
+.f_orange{color:#ff7200;}
+.fn14{ font-size:14px;}
+.f_white{color:#fff;}
+.mt8{ margin-top:8px;}
+.mb8{ margin-bottom:8px;}
+.ml8{ margin-left:8px;}
+.ml45{ margin-left:40px;}
+.mr8{ margin-right:8px;}
+
+.b_wrap{width:980px;margin:0 auto;}
+
+.current{background:url(../images/b_line.jpg) repeat-x left bottom;width:980px;height:35px;line-height:35px;}
+.current span{background:url(../images/home_icon.jpg) no-repeat left center;padding-left:25px;height:35px;line-height:35px;display:inline-block;}
+.clumn_w{margin-top:8px;}
+.clumn_w .clumn_l{float:left;width:260px;}
+.clumn_w .clumn_r{float:right;}
+.clumn_l .clumn{border:1px solid #dddddd;background:#fff;padding-bottom:12px;margin-bottom:8px;}
+.clumn .clumn_tit{font-size:16px;font-weight:600;padding-left:12px;height:40px;line-height:40px;color:#666666;border-bottom:1px solid #ddd;}
+.cln_w p{color:#666;font-size:14px;font-weight:bold;height:35px;line-height:35px;padding-left:12px;}
+.cln_c{padding-left:8px;}
+.cln_c a{line-height:24px;height:24px;float:left;margin:0 5px;}
+.t01{border-top:2px solid #22ade6;}
+.t02{border-top:2px solid #81bc2c;}
+.t03{border-top:2px solid #ff6600;}
+.clumn_tit span,.clumn_tit a{display:inline-block;}
+.clumn_tit span{float:left;}
+.clumn_tit a{float:right;font-weight:normal;font-size:12px;color:#666;margin-right:12px;}
+.clu_ul li{background:url(../images/row.jpg) no-repeat 4% center;height:33px;line-height:33px;padding-left:25px;}
+.s_ul a{float:left;}
+.s_ul span{float:right;color:#f60;margin-right:12px;}
+.clumn_r{border:1px solid #dddddd;border-top:2px solid #419703;width:710px;background:#fff;}
+.cr_tit{border-bottom:1px solid #ddd;height:40px;line-height:40px;}
+.cr_tit b{float:left;color:#666;font-size:16px;padding-left: 15px;}
+.cr_tit span{float:right;background:url(../images/button_bg.png) no-repeat center top;color:#fff;width:85px;height:25px;line-height:25px;text-align:center;margin:15px 15px 0 0;}
+.cr_wrap{padding:15px;}
+
+.xq_wrap{padding:12px;}
+.xq_wrap .xq_left{float:left;border:1px solid #e5e3e3;}
+.xq_wrap .xq_right{float:left;margin-left:10px;}
+.xq_wrap .xq_right p{line-height:28px;height:28px;}
+.xq_wrap .xq_right .xq_t,.xq_xs{font-size:14px;}
+.xq_wrap .xq_right span{color:#ff6600;}
+.xq_wrap .xq_right .zg_price{text-decoration:line-through;}
+.df_wrap .tc_tit{background:#f9ffee;border-top:2px solid #81bc2c;}
+.df_wrap .tc_tit span{float:left;display:inline-block;}
+.df_wrap .tc_tit a{float:right;padding-right:15px;font-size:12px;font-weight:normal;}
+.tc_tit {
+    height: 38px;
+    line-height: 38px;
+    border-bottom: 1px solid #ddd;
+    font-weight: bold;
+    font-size: 16px;
+    color: #0f68c2;
+    padding-left: 12px;
+}

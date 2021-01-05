@@ -5,9 +5,16 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
+/**
+ * @title
+ * @description //重写springmvc的拦截器，prehandle是预处理
+ * @author ：linkong
+ * @updateTime 2021/12/5 15:27
+ * @return
+ * @throws
+ */
 public class ManagerInterceptor implements HandlerInterceptor {
-//重写springmvc的拦截器，prehandle是预处理
+
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         Object user = request.getSession().getAttribute("admin");

@@ -19,19 +19,14 @@ public class UserService implements IUserService {
     public User login(String userName,String password)throws Exception{
         return userDao.login(userName,password);
     }
-
-    public List<User> findList()throws Exception{
-        return userDao.findList();
-    }
-
-    @Override
-    public User findByUserName(String userName) throws Exception {
-        return userDao.findByUserName(userName);
-    }
-
     @Override
     public void save(User user) throws Exception {
         userDao.save(user);
     }
+
+    public User findByUserName(String userName) throws Exception {
+        return userDao.findByUserName(userName);
+    }
+
 
 }

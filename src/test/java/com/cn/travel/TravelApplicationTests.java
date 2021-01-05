@@ -16,19 +16,5 @@ import java.util.List;
 @SpringBootTest
 public class TravelApplicationTests {
 
-	@Autowired
-    UserService userService;
-	@Test
-	public void contextLoads() {
-		PageHelper.startPage(2,1);
-		try {
-			List<User> list = userService.findList();
-			PageInfo<User> pageInfo=new PageInfo<User>(list);
-			System.out.print(pageInfo);
-		}catch (Exception e){
-			e.printStackTrace();
-		}
-
-	}
 
 }
