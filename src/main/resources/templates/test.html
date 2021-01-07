@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>中南旅游网-登录</title>
+    <title>中南游-测试</title>
     <!--自定义样式-->
     <link href="favicon.ico" rel="#">
     <link rel="stylesheet" type="text/css" href="../static/css/bootstrap.min.css">
@@ -41,58 +41,7 @@
         </div>
         <div data-v-357a65ed="" class="view-container">
             <div data-v-165b75c4="" data-v-357a65ed="" class="UserProfile view">
-                <div class="fmr1">
-                    <div class="fmr1_top">我的订单</div>
-                    <div class="fmr1_m">
-                        <div class="fmyor">
-                            <ul>
-                                <li class="f2">订单列表</li>
-                            </ul>
-                        </div>
-                        <div class="ftx">
-                            <form id="pageForm" name="pageForm" action="/myOrder" method="post">
-                                <input type="hidden" id="count" name="count" th:value="${pageParam.count}"/>
-                                <input type="hidden" id="size" name="size" th:value="${pageParam.size}"/>
-                                <div class="fy_w"><a href="#" th:text="${pageParam.pageNumber}+'/'+${pageParam.size}+'页'"> </a>
-                                    <a class="previousPage" th:if="${pageParam.pageNumber != 1}" th:href="@{/myOrder(pageSize=7,pageNum=${pageParam.pageNumber}-1)}">上一页</a><a class="toPageOne" href="/myOrder?pageSize=7&pageNum=1">首页</a><a class="nextPage" th:if="${pageParam.pageNumber != pageParam.size}" th:href="@{/myOrder(pageSize=${pageParam.pageSize},pageNum=${pageParam.pageNumber}+1)}">下一页</a>
-                                    <a class="toPageLast" th:href="@{/myOrder(pageSize=${pageParam.pageSize},pageNum=${pageParam.size})}">尾页</a></div>
-                            </form>
-                        </div>
 
-                        <div class="forder">
-                            <div class="for_top">
-                                <div class="for_t4">订单编号</div>
-                                <div class="for_t2">产品信息</div>
-                                <div class="for_t3">订单金额</div>
-                                <div class="for_t3">订单状态</div>
-                                <div class="for_t3">操作</div>
-                                <br style="clear:both"/>
-                            </div>
-                            <div class="for_m" th:each="var,iterStat: ${pageData}">
-                                <div class="for_t4">
-                                    <p th:text="'订单号：'+${var.orderCode}"></p>
-                                    <p th:text="'订单日期：'+${var.orderTime}"></p>
-                                    <p th:text="'预定日期：'+${var.setoffTime}"></p>
-                                    <p th:if="${var.productType==0}">订单类型：旅游路线</p>
-                                    <p th:if="${var.productType==1}">订单类型：旅游景点</p>
-                                    <p th:if="${var.productType==2}">订单类型：酒店</p>
-                                    <p th:if="${var.productType==3}">订单类型：旅游车票</p>
-                                    <p th:if="${var.productType==4}">订单类型：旅游保险</p>
-                                </div>
-                                <div class="for_t2">
-                                    <img th:src="${var.imgUrl}" style=" width:60px;   height: 45px;" align="absmiddle"/>&nbsp;<span class="fspan3" th:text="${var.productName}"></span>
-                                </div>
-                                <div class="for_t3" th:text="${var.fee}"></div>
-                                <div class="for_t3" th:if="${var.state==0}">待付款</div>
-                                <div class="for_t3" th:if="${var.state==1}">已付款</div>
-                                <div class="for_t3" th:if="${var.state==2}">已撤销</div>
-                                <div class="for_t3"><a th:if="${var.state==0}" th:href="@{/payOrder(id=${var.id})}">付款</a><br>
-                                    <a th:if="${var.state==0}" th:href="@{/deleteOrder(id=${var.id})}">撤销</a>
-                                </div>                                <br style="clear:both"/>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
 
         </div>
