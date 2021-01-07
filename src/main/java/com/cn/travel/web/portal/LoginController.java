@@ -6,6 +6,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpSession;
+/**
+ * @title 前台首页用户登录
+ * @description
+ * @author ：linkong
+ * @updateTime 2020/11/15 11:53
+ * @return
+ * @throws
+ */
 @Controller
 public class LoginController extends BaseController {
 

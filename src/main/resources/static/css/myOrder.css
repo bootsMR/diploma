@@ -1,0 +1,78 @@
+.current{background:url(../images/usercenter/b_line.jpg) repeat-x left bottom;width:980px;height:35px;line-height:35px;}
+.fmr1_m {
+    width: 678px;
+    padding: 15px;
+}
+.fmyor {
+    width: 700px;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 10px;
+}
+.fmyor ul li.f2 {
+    width: 75px;
+    float: left;
+    height: 25px;
+    padding-top: 3px;
+    line-height: 29px;
+    border-bottom: 1px solid #fff;
+    background: url(../images/flibg1.png) no-repeat;
+    margin-left: 15px;
+    text-align: center;
+}
+.ftx {
+     width: 700px;
+     border: 1px solid #00BFFF;
+     background: #fff7e5;
+     padding: 10px;
+     color: #333;
+ }
+.forder {
+    width: 700px;
+    border: 1px solid #ececec;
+    margin-top: 10px;
+}
+.for_top {
+    width: 700px;
+    height: 29px;
+}
+.for_t4 {
+    width: 230px;
+    padding-top: 7px;
+    padding-left: 20px;
+    float: left;
+    text-align: left;
+}
+.for_m {
+    width: 700px;
+    padding: 10px 0px;
+    line-height: 18px;
+}
+.for_t4 {
+    width: 200px;
+    padding-top: 7px;
+    padding-left: 20px;
+    float: left;
+    text-align: left;
+}
+.for_t2 {
+    width: 200px;
+    padding-top: 7px;
+    float: left;
+    text-align: left;
+}
+.for_t3 {
+    width: 114px;
+    padding-top: 7px;
+    float: left;
+    text-align: center;
+}
+.for_t3 a {
+    color: #8a6d3b;
+    display: block;
+    text-decoration: none;
+    background: #00BFFF;
+    padding: 3px;
+    text-align: center;
+    margin-left: 30px;
+
+}

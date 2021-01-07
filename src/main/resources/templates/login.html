@@ -30,13 +30,6 @@
 			<span>欢迎登录中南游账户</span>
 		</div>
 		<div class="login_inner">
-			<!--登录错误提示消息-->
-			<div id="errorMsg" class="alert alert-danger" >
-				<tr>
-					<td></td>
-					<td th:text="${message}" ></td>
-				</tr>
-			</div>
 			<form id="loginForm" action="/userLoging" method="post" accept-charset="utf-8">
 				<input type="hidden" name="action" value="login"/>
 				<input type="text" id="userName" name="userName" value="" placeholder="请输入用户名"/>
