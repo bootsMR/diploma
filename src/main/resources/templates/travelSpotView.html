@@ -34,7 +34,6 @@
 <!--导航栏--->
 <div th:replace="navigation :: copy"></div>
 <!--导航栏--->
-
 <div class="b_wrap">
     <div class="current"><span>当前所在地：</span><a th:href="@{/index}">首页</a> >> <a th:href="@{/travelRoute}">旅游路线</a> <a href="#">路线详情</a> </div>
     <div class="clumn_w clearfix">
@@ -59,36 +58,40 @@
 
         </div>
         <div class="clumn_r">
-            <div class="tc_tit" th:text="${entity.title}">
-            </div>
-
-
+            <div class="tc_tit" th:text="${entity.spotName}"></div>
             <div class="xq_wrap clearfix">
-                <div class="xq_left"><img th:src="${entity.imgUrl}"/></div>
-                <div class="xq_right">
-                    <div class="xq_detail">
-                        <p th:text="'出发地点：'+${entity.startSite}"></p>
-                        <p th:text="'结束地点：'+${entity.endSite}"></p>
-                        <p th:text="'旅游价格：￥'+${entity.price}"></p>
-                        <p th:text="'出团日期：'+${entity.startTime}+'至'+${entity.endTime}"></p>
-                        <p th:text="'路线简介：'+${entity.intro}"></p>
-                    </div>
-                    <div class="share">
-                        <div class="bshare-custom"><strong>分享到&nbsp;&nbsp;</strong><a title="分享到QQ空间" class="bshare-qzone"></a><a title="分享到新浪微博" class="bshare-sinaminiblog"></a><a title="分享到人人网" class="bshare-renren"></a><a title="分享到腾讯微博" class="bshare-qqmb"></a><a title="分享到网易微博" class="bshare-neteasemb"></a><a title="更多平台" class="bshare-more bshare-more-icon more-style-addthis"></a><span class="BSHARE_COUNT bshare-share-count">0</span></div>
-                    </div>
-                    <div class="xq_button"><a th:if="${session.userName!=null}" th:href="@{/travelRouteCreatOrder(id=${entity.id})}">
-                        <img src="../static/routel_list/order_button.jpg"/></a>
-                        <p th:if="${session.userName==null}"><font color="red"> 预定请先登陆</font></p>
-                        <p th:if="${CreatSuccess==true}"><font color="red">预定成功，请前往会员中心-我的订单查看订单</font></p></div>
-                </div>
+                <div class="xq_left"><img th:src="${entity.imgUrl}" width="227px" height="170px"/></div>
+
             </div>
             <div class="xq_wrap">
                 <div class="tab_menu xq_menu">
                     <ul class="xq_ul">
-                        <li class="selected">路线导航</li>
+                        <li class="selected">景点介绍</li>
                     </ul>
                 </div>
-                <div id="allmap" style="height:500px;width:100%;" class="tab_box"></div>
+
+                <div class="xq_detail">
+                    <p th:if="${entity.spotStar==1}">景点等级：A</p><p></p>
+                    <p th:if="${entity.spotStar==2}">景点等级：AA</p><p></p>
+                    <p th:if="${entity.spotStar==3}">景点等级：AAA</p><p></p>
+                    <p th:if="${entity.spotStar==4}">景点等级：AAAA</p><p></p>
+                    <p th:if="${entity.spotStar==5}">景点等级：AAAAA</p><p></p>
+                    <p th:text="'景点地址：'+${entity.spotAddress}"></p><p></p>
+                    <p th:text="'开放时间：'+${entity.openTime}"></p><p></p>
+                    <p th:text="'门票价格：￥'+${entity.ticketsMessage}"></p><p></p><p>
+                    <p th:text="'景点简介：'+${entity.spotIntro}"></p><p></p>
+                </div>
+                <div class="xq_button">
+                    <a th:if="${session.userName!=null}" th:href="@{/travelSpotCreatOrder(id=${entity.id})}">
+                        <img src="../static/routel_list/order_button.jpg"/></a>
+                    <p th:if="${session.userName==null}"><font color="red">预定请先登陆</font></p>
+                    <p th:if="${CreatSuccess==true}"><font color="red">预定成功，请前往会员中心-我的订单查看订单</font></p></div>
+              <div class="share">
+                    <div class="bshare-custom"><strong>分享到&nbsp;&nbsp;</strong><a title="分享到QQ空间" class="bshare-qzone"></a><a title="分享到新浪微博" class="bshare-sinaminiblog"></a><a title="分享到人人网" class="bshare-renren"></a><a title="分享到腾讯微博" class="bshare-qqmb"></a><a title="分享到网易微博" class="bshare-neteasemb"></a><a title="更多平台" class="bshare-more bshare-more-icon more-style-addthis"></a><span class="BSHARE_COUNT bshare-share-count">0</span></div>
+                </div>
+
+
+
             </div>
         </div>
     </div>
@@ -97,26 +100,8 @@
 <div th:replace="navigation :: foot"></div>
 <!--底部--->
 
+
 <script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/buttonLite.js#style=-1&amp;uuid=&amp;pophcol=3&amp;lang=zh"></script>
 <script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/bshareC0.js"></script>
-<script src="http://libs.baidu.com/jquery/1.9.0/jquery.js"></script>
-   <!--参考百度地图api开发文档，将ak改成自己的-->
-<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&amp;ak=mr5DYlRg2yZGvSU8ScQI2RZWt5RYFlcs"></script>
-<script th:inline="javascript">
-    // 百度地图API功能
-    var map = new BMap.Map("allmap");
-    var start = [[${entity.startSite}]];
-    var end = [[${entity.endSite}]];
-    //三种驾车策略：最少时间，最短距离，避开高速
-    var routePolicy = [BMAP_DRIVING_POLICY_LEAST_TIME,BMAP_DRIVING_POLICY_LEAST_DISTANCE,BMAP_DRIVING_POLICY_AVOID_HIGHWAYS];
-        map.clearOverlays();
-        var i=$("#driving_way select").val();
-        search(start,end,routePolicy[1]);//使用最短距离的策略
-        function search(start,end,route){
-        var driving = new BMap.DrivingRoute(map, {renderOptions:{map: map, autoViewport: true},policy: route});
-        driving.search(start,end);
-         }
-</script>
-
 </body>
 </html>
