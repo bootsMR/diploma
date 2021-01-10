@@ -1,7 +1,14 @@
 package com.cn.travel.cms.scenicSpot.provider;
 
 import org.springframework.stereotype.Component;
-
+/**
+ * @title 旅游景点
+ * @description
+ * @author ：linkong
+ * @updateTime 2021/1/8 21:52
+ * @return
+ * @throws
+ */
 @Component
 public class ScenicSpotSqlProvider {
 

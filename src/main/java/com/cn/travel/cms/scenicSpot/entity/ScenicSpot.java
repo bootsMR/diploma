@@ -1,7 +1,14 @@
 package com.cn.travel.cms.scenicSpot.entity;
 
 import com.cn.travel.base.entity.BaseDomain;
-
+/**
+ * @title 旅游景点
+ * @description
+ * @author ：linkong
+ * @updateTime 2021/1/8 21:52
+ * @return
+ * @throws
+ */
 @SuppressWarnings("serial")
 public class ScenicSpot extends BaseDomain {
 

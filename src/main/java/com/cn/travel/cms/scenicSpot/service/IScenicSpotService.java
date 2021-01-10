@@ -3,7 +3,14 @@ package com.cn.travel.cms.scenicSpot.service;
 import com.cn.travel.cms.scenicSpot.entity.ScenicSpot;
 
 import java.util.List;
-
+/**
+ * @title 旅游景点
+ * @description
+ * @author ：linkong
+ * @updateTime 2021/1/8 21:52
+ * @return
+ * @throws
+ */
 public interface IScenicSpotService {
 //出现旅游景点
     public long count2()throws Exception;

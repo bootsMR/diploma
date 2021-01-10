@@ -11,7 +11,14 @@ import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.List;
-
+/**
+ * @title 旅游景点
+ * @description
+ * @author ：linkong
+ * @updateTime 2021/1/8 21:52
+ * @return
+ * @throws
+ */
 @Service
 public class ScenicSpotService implements IScenicSpotService {
 
@@ -24,7 +31,7 @@ public class ScenicSpotService implements IScenicSpotService {
         return  scenicSpotDao.count2();
     }
 
-
+    //分页
     public List<ScenicSpot> findByPage(int currentPage, int pageSize, String query) {
         List<ScenicSpot> list = new ArrayList<ScenicSpot>();
         PageHelper.startPage(currentPage, pageSize);
