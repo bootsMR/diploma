@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>中南游-保险</title>
+    <link rel="stylesheet" type="text/css" href="../static/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../static/css/travelRoute.css">
+    <link rel="stylesheet" type="text/css" href="../static/css/common.css">
+    <script type="text/javascript" src="../static/js/imgtoggle.js"></script>
+    <script src="../static/js/jquery-3.3.1.js"></script>
+    <script src="../static/js/bootstrap.min.js"></script>
+</head>
+<body>
+<!--导航栏--->
+<div th:replace="navigation :: copy"></div>
+<!--导航栏--->
+<div class="b_wrap">
+    <div class="current"><span>当前所在地：</span><a th:href="@{/index}">首页</a> >> <a th:href="@{/travelSpot}">旅游景点</a> </div>
+
+    <div class="clumn_r01">
+        <div class="js_box">
+            <div class="js_tit clearfix">
+                <form id="pageForm" name="pageForm" action="/insurance" method="post">
+                    <input type="hidden" id="count" name="count" th:value="${pageParam.count}"/>
+                    <input type="hidden" id="pageNumber" name="pageNumber" th:value="${pageParam.pageNumber}"/>
+                    <input type="hidden" id="size" name="size" th:value="${pageParam.size}"/>
+                    <input type="hidden" id="pageSize" name="pageSize" th:value="${pageParam.pageSize}"/>
+                    <div class="fy_w"><a href="#" th:text="${pageParam.pageNumber}+'/'+${pageParam.size}+'页'"> </a>
+                        <a class="previousPage">上一页</a>
+                        <a class="toPageOne">首页</a>
+                        <a class="nextPage">下一页</a>
+                        <a class="toPageLast">尾页</a>
+                    </div>
+                </form>
+            </div>
+            <div class="js_wrap claerdix">
+                <div class="js_con clearfix" th:each="var,iterStat: ${pageData}">
+                    <div class="js_l"><a th:href="@{/insurancePortalView(id=${var.id})}"><img th:src="${var.imgUrl}" style="    height: 75px;"/></a></div>
+                    <div class="js_c">
+                        <p><b><a th:href="@{/insurancePortalView(id=${var.id})}" th:text="${var.title}"></a></b></p>
+                        <!-- <p><a class="js_pl" href="#"><span>0</span>条评论</a> <a class="js_gm" href="#"><span>102</span>人购买</a></p>-->
+                        <p th:if="${var.insuranceCompany==0}">保险公司：中国平安</p>
+                        <p th:if="${var.insuranceCompany==1}">保险公司：中国人寿</p>
+                        <p th:if="${var.type==0}">保险类型：自驾旅游保险</p>
+                        <p th:if="${var.type==1}">保险类型：高原旅游保险</p>
+                        <p th:if="${var.type==2}">保险类型：港澳台旅游保险</p>
+                        <p th:if="${var.type==3}">保险类型：国内自助游保险</p>
+                    </div>
+                    <div class="js_r">
+                        <p><span class="fn_o">￥</span><b th:text="${var.price}"></b>起</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+    </div>
+</div>
+<!--底部--->
+<div th:replace="navigation :: foot"></div>
+<!--底部--->
+
+<script>
+    $(".previousPage").click(function(){
+        if(parseInt($("#pageNumber").val())==1){
+            $("#pageNumber").val(1);
+            return;
+        }else{
+            $("#pageNumber").val(parseInt($("#pageNumber").val())-1);
+            $("#pageForm").submit();
+        }
+    })
+
+    $(".nextPage").click(function(){
+        if(parseInt($("#pageNumber").val())==parseInt($("#size").val())){
+            $("#pageNumber").val(parseInt($("#size").val()));
+            /* alert("xia yi ye1 ");*/
+            return;
+        }else{
+            $("#pageNumber").val(parseInt($("#pageNumber").val())+1);
+            /*alert("xia yi ye2 ");*/
+            $("#pageForm").submit();
+        }
+    })
+
+    $(".toPageOne").click(function(){
+        $("#pageNumber").val(1);
+        $("#pageForm").submit();
+    })
+
+    $(".toPageLast").click(function(){
+        $("#pageNumber").val(parseInt($("#size").val()));
+        $("#pageForm").submit();
+    })
+
+</script>
+</body>
+</html>
