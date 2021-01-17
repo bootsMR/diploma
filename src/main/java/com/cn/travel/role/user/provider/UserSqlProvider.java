@@ -37,6 +37,33 @@ public class UserSqlProvider {
         return "UPDATE t_pz_user SET MODIFY_USER_ID=#{modifyUserId},MODIFY_TIME=NOW(),USER_NAME=#{userName}, " +
                 "PASSWORD=#{password},LINK_TEL=#{linkTel},NAME=#{name},IC_CODE=#{icCode},STATE=#{state},PROVINCE=#{province} WHERE id=#{id}";
     }
+    //所有用户
+    public String count(){
+        return "SELECT count(*) FROM t_pz_user WHERE DELETE_STATUS=0";
+    }
+
+    //省份
+    public String countPorvice(){
+        return "SELECT p.`id` PROVICE,COUNT(u.`PROVINCE`) COUNT FROM t_pz_province p LEFT JOIN t_pz_user u ON u.`PROVINCE` = p.`id` GROUP BY p.id;";
+    }
+    //查询
+    public String findListByQuery(){
+        return "SELECT * FROM t_pz_user WHERE DELETE_STATUS=0 AND USER_NAME LIKE #{query,jdbcType=VARCHAR} ORDER BY ADD_TIME DESC";
+    }
+
+    //查询所用用户，并排序
+    public String findList(){
+        return "SELECT * FROM t_pz_user WHERE DELETE_STATUS=0 ORDER BY ADD_TIME DESC";
+    }
+
+
+    //删除
+    public String deleteByid(){
+
+        return "UPDATE t_pz_user SET DELETE_STATUS=1 WHERE id=#{id}";
+    }
+
+
 
 
 }

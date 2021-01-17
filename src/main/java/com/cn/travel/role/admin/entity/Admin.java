@@ -1,7 +1,14 @@
 package com.cn.travel.role.admin.entity;
 
 import com.cn.travel.base.entity.BaseDomain;
-
+/**
+ * @title 管理员
+ * @description
+ * @author ：linkong
+ * @updateTime 2021/1/12 19:04
+ * @return
+ * @throws
+ */
 @SuppressWarnings("serial")
 public class Admin extends BaseDomain {
 

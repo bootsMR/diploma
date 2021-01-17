@@ -19,5 +19,10 @@ public interface IUserService {
 //修改用户
     public void update(User user)throws Exception;
 
+    //查询
+    public List<User> findByPage(int currentPage,int pageSize, String query)throws Exception;
+
+    //删除用户
+    public void deleteByid(String id)throws Exception;
 
 }

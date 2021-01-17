@@ -1,6 +1,7 @@
 package com.cn.travel.role.user.dao;
 
 import com.cn.travel.base.dao.BaseDao;
+import com.cn.travel.role.user.entity.Porvice;
 import com.cn.travel.role.user.entity.User;
 import com.cn.travel.role.user.provider.UserSqlProvider;
 import org.apache.ibatis.annotations.*;
@@ -45,4 +46,24 @@ public interface UserDao extends BaseDao<User> {
     //修改用户
     @UpdateProvider(type = UserSqlProvider.class, method = "update")
     public void update(User user);
+
+    //省份
+    @SelectProvider(type = UserSqlProvider.class, method = "countPorvice")
+    public List<Porvice> countPorvice();
+
+    //所有用户
+    @SelectProvider(type = UserSqlProvider.class, method = "count")
+    public long count();
+
+    //查询
+    @SelectProvider(type = UserSqlProvider.class, method = "findListByQuery")
+    public List<User> findListByQuery(@Param("query") String query);
+
+    //查询所用用户，并排序
+    @SelectProvider(type = UserSqlProvider.class, method = "findList")
+    public List<User> findList();
+
+    //删除
+    @UpdateProvider(type = UserSqlProvider.class, method = "deleteByid")
+    public void deleteByid(@Param("id")String id);
 }

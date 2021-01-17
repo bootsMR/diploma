@@ -7,7 +7,14 @@ import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
-
+/**
+ * @title 管理员
+ * @description 
+ * @author ：linkong
+ * @updateTime 2021/1/12 19:04 
+ * @return 
+ * @throws 
+ */
 @Mapper
 @Component
 public interface AdminDao extends BaseDao<Admin> {

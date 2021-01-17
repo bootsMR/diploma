@@ -21,35 +21,9 @@ public class AdminService implements IAdminService {
     public long count()throws Exception{
         return adminDao.count();
     }
-
     public Admin login(String userName, String password)throws Exception{
         return adminDao.login(userName,password);
     }
-
-    public Admin findByUserName(String userName){
-        return adminDao.findByUserName(userName);
-    }
-
-    public Admin findById(String id)throws Exception{
-        return adminDao.findById(id);
-    }
-
-    public List<Admin> findList()throws Exception{
-        return adminDao.findList();
-    }
-
-    public void save(Admin admin)throws Exception{
-        adminDao.save(admin);
-    }
-
-    public void update(Admin admin)throws Exception{
-        adminDao.update(admin);
-    }
-
-    public void deleteByid(String id)throws Exception{
-        adminDao.deleteByid(id);
-    }
-
     public List<Admin> findByPage(int currentPage, int pageSize, String query) {
         List<Admin> list = new ArrayList<Admin>();
         PageHelper.startPage(currentPage, pageSize);
@@ -61,4 +35,28 @@ public class AdminService implements IAdminService {
         PageInfo<Admin> pageInfo=new PageInfo<Admin>(list);
         return pageInfo.getList();
     }
+    public Admin findById(String id)throws Exception{
+        return adminDao.findById(id);
+    }
+    public Admin findByUserName(String userName){
+        return adminDao.findByUserName(userName);
+    }
+    public void save(Admin admin)throws Exception{
+        adminDao.save(admin);
+    }
+    public void update(Admin admin)throws Exception{
+        adminDao.update(admin);
+    }
+    public void deleteByid(String id)throws Exception{
+        adminDao.deleteByid(id);
+    }
+
+
+
+
+
+
+
+
+
 }
